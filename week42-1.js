@@ -31,10 +31,8 @@ console.log("Task: A");
 
 function arrayLength(n, m) {
     let array = [];
-    let index = 0;
     for (let i = n; i < m; i++) {
-        array[index] = i;
-        index++
+        array.push(i);
     }
     return array;
 }
@@ -89,9 +87,9 @@ console.log(combineArrays(array1, array2));
 /* -----------------------------------------------------------------------------
     Task: C
     Following you will find an alphabet a encrypted text and a shift value. 
-    The message is encrypted using a cesar chipher https://en.wikipedia.org/wiki/Caesar_cipher 
+    The message is encrypted using a cesar cipher https://en.wikipedia.org/wiki/Caesar_cipher 
     Create a function that 
-    - Takes three parameters message, alphabet and shift 
+    - Takes three parameters: message, alphabet and shift 
     - Creates the key based on the alphabet and the shift value. 
     - decrypts and returns the message.
     Use arrays and for loops. 
@@ -100,6 +98,12 @@ console.log("Task: C");
 const ALPHABET = "abcdefghijklmnopqrstuvwxyz"
 const message = "ckrr jutk"
 let shift = 6
+
+function cipher(alphabet, shift, message) {
+
+
+
+}
 
 /* -----------------------------------------------------------------------------
     Task: D
@@ -119,14 +123,47 @@ console.log("Task: D");
 const numbers = [1, 23, 14, 56, 42, 33, 0, 3];
 const target = 36;
 
+function whichTwoNumbers(list, target) {
+    let answer = []
+    for (let i = 0; i < list.length; i++) {
+        for (let j = i + 1; j < list.length; j++) {
+            if (list[i] + list[j] == target) {
+                answer = [list[i] , list[j]];
+            }
+        }
+    }
+    return answer;
+}
+
+console.log(whichTwoNumbers(numbers, target));
+
 
 
 
 /* -----------------------------------------------------------------------------
     Task: E
-    Create a function that takes a number as inputt and returns the number of digits in that number. 
+    Create a function that takes a number as input and returns the number of digits in that number. 
     123 -> 3
     2 -> 1
     42693 -> 5
 */
 console.log("Task: E");
+
+const NUMBER_1 = 123;
+const NUMBER_2 = 2;
+const NUMBER_3 = 42693;
+
+
+function numberOfDigits(number) {
+    let numberAsList = []
+    let amountOfDigits = 0;
+
+    numberAsList = number.toString().split("").map(Number);
+    amountOfDigits = numberAsList.length;
+
+    return amountOfDigits;
+}
+
+console.log(numberOfDigits(NUMBER_1))
+console.log(numberOfDigits(NUMBER_2))
+console.log(numberOfDigits(NUMBER_3))
