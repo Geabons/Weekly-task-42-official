@@ -95,15 +95,33 @@ console.log(combineArrays(array1, array2));
     Use arrays and for loops. 
 */
 console.log("Task: C");
-const ALPHABET = "abcdefghijklmnopqrstuvwxyz"
-const message = "ckrr jutk"
-let shift = 6
+const ALPHABET = "abcdefghijklmnopqrstuvwxyz";
+const message = "ckrr jutk";
+let shift = 6;
 
 function cipher(alphabet, shift, message) {
+    let decryptedMessage = " ";
 
+    for (let i = 0; i < message.length; i++) {
+        const char = message[i];
 
+        if (char === " ") {
+            decryptedMessage += " ";
+            continue;
+        }
+
+        const currentIndex = alphabet.indexOf(char);
+
+        const newIndex = (currentIndex - shift + alphabet.length) % alphabet.length;
+
+        decryptedMessage += alphabet[newIndex];
+    }
+
+    return decryptedMessage;
 
 }
+
+console.log(cipher(ALPHABET, shift, message));
 
 /* -----------------------------------------------------------------------------
     Task: D
@@ -123,12 +141,12 @@ console.log("Task: D");
 const numbers = [1, 23, 14, 56, 42, 33, 0, 3];
 const target = 36;
 
-function whichTwoNumbers(list, target) {
+function whichTwoNumbers(array, target) {
     let answer = []
-    for (let i = 0; i < list.length; i++) {
-        for (let j = i + 1; j < list.length; j++) {
-            if (list[i] + list[j] == target) {
-                answer = [list[i] , list[j]];
+    for (let i = 0; i < array.length; i++) {
+        for (let j = i + 1; j < array.length; j++) {
+            if (array[i] + array[j] == target) {
+                answer = [array[i], array[j]];
             }
         }
     }
@@ -155,7 +173,7 @@ const NUMBER_3 = 42693;
 
 
 function numberOfDigits(number) {
-    let numberAsList = []
+    let numberAsList = [];
     let amountOfDigits = 0;
 
     numberAsList = number.toString().split("").map(Number);
@@ -164,6 +182,6 @@ function numberOfDigits(number) {
     return amountOfDigits;
 }
 
-console.log(numberOfDigits(NUMBER_1))
-console.log(numberOfDigits(NUMBER_2))
-console.log(numberOfDigits(NUMBER_3))
+console.log(numberOfDigits(NUMBER_1));
+console.log(numberOfDigits(NUMBER_2));
+console.log(numberOfDigits(NUMBER_3));
